@@ -17,20 +17,28 @@
 </template>
 
 <style>
+.about {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about p {
+  margin-top: 1rem;
+}
+
 @media (min-width: 1024px) {
   .about {
     display: flex;
     flex-direction: column;
     justify-items: center;
-    align-items: center;
+    align-items: start;
   }
 
   .about h1 {
     font-weight: 500;
-  }
-
-  .about p {
-    margin-top: 1rem;
+    font-size: 2rem;
   }
 }
 </style>
