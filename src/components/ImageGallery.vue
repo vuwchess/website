@@ -68,12 +68,29 @@ export default {
 </script>
 
 <template>
-  <Galleria :value="images" :responsiveOptions="responsiveOptions" :numVisible="5" :circular="true"
-    containerStyle="max-width: 640px" :showItemNavigators="true" :showThumbnails="false" :showItemNavigatorsOnHover="true"
-    :showIndicators="true">
-    <template #item="slotProps">
-      <img :src="slotProps.item.source.url" :alt="slotProps.item.title" class="gallery-image"
-        style="width: 100%; display: block; border-radius: 25px" />
-    </template>
-  </Galleria>
+  <div class="card">
+    <Galleria :value="images" :responsiveOptions="responsiveOptions" :numVisible="5" :circular="true"
+      :showItemNavigators="true" :showThumbnails="false" :showItemNavigatorsOnHover="true" :showIndicatorsOnItem="false"
+      :showIndicators="true">
+      <template #item="slotProps">
+        <img :src="slotProps.item.source.url" :alt="slotProps.item.source.description" class="gallery-image" />
+      </template>
+    </Galleria>
+  </div>
 </template>
+
+<style scoped>
+.card {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+}
+
+.gallery-image {
+  display: block;
+  border-radius: 25px 25px 0px 0px;
+  max-width: 450px;
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+</style>
