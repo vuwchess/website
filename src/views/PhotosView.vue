@@ -1,5 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ImageGallery from '../components/ImageGallery.vue';
+</script>
 
 <template>
-  <div class="photos"></div>
+  <ImageGallery />
 </template>
