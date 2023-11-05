@@ -72,10 +72,8 @@ export default {
     containerStyle="max-width: 640px" :showItemNavigators="true" :showThumbnails="false" :showItemNavigatorsOnHover="true"
     :showIndicators="true">
     <template #item="slotProps">
-      <img :src="slotProps.item.source.url" :alt="slotProps.item.title" style="width: 100%; display: block;" />
-    </template>
-    <template #thumbnail="slotProps">
-      <img :src="slotProps.item.source.url" :alt="slotProps.item.title" style="display: block;" />
+      <img :src="slotProps.item.source.url" :alt="slotProps.item.title" class="gallery-image"
+        style="width: 100%; display: block; border-radius: 25px" />
     </template>
   </Galleria>
 </template>
