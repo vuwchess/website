@@ -12,7 +12,8 @@ import ContactIcon from './icons/IconContact.vue'
     </template>
     <template #heading>Discord</template>
 
-    Join our <a href="https://vuejs.org/" target="_blank" rel="noopener">discord server</a> to chat with other members of
+    Join our <a href="https://discord.gg/pCg4WWxk8E" target="_blank" rel="noopener">discord server</a> to chat with other
+    members of
     the club and to keep up with the latest news and events.
   </WelcomeItem>
 
