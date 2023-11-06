@@ -10,10 +10,9 @@ import ImageGallery from '../components/ImageGallery.vue';
 
 <style scoped>
 .photos {
-  margin-top: 2rem;
+  margin-top: 4rem;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  width: 100%;
 }
 </style>
