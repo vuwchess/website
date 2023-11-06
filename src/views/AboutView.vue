@@ -24,6 +24,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: var(--background-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 25px;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 .about p {
@@ -31,13 +35,6 @@
 }
 
 @media (min-width: 1024px) {
-  .about {
-    display: flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: start;
-  }
-
   .about h1 {
     font-weight: 500;
     font-size: 2rem;
