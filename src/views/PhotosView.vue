@@ -4,15 +4,16 @@ import ImageGallery from '../components/ImageGallery.vue';
 
 <template>
   <div class="photos">
+    <h1 class="green">Image Gallery</h1>
     <ImageGallery />
   </div>
 </template>
 
 <style scoped>
-.photos {
-  margin-top: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+h1 {
+  font-weight: 500;
+  font-size: 2.6rem;
+  position: relative;
+  margin-bottom: 1rem;
 }
 </style>
