@@ -25,7 +25,7 @@ export default {
     };
   },
   async created() {
-    this.images = await this.getImages();
+    this.images = (await this.getImages()).reverse();
   },
   methods: {
     getImages: async () => {
@@ -70,7 +70,7 @@ export default {
 <template>
   <div class="card">
     <Galleria :value="images" :responsiveOptions="responsiveOptions" :numVisible="5" :circular="true"
-      :showItemNavigators="true" :showThumbnails="false" :showItemNavigatorsOnHover="true" :showIndicatorsOnItem="false"
+      :showItemNavigators="true" :showThumbnails="false" :showItemNavigatorsOnHover="false" :showIndicatorsOnItem="false"
       :showIndicators="true">
       <template #item="slotProps">
         <img :src="slotProps.item.source.url" :alt="slotProps.item.source.description" class="gallery-image" />
@@ -83,12 +83,13 @@ export default {
 .card {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
+  background-color: var(--background-color);
+  width: 100%;
 }
 
 .gallery-image {
   display: block;
   border-radius: 25px 25px 0px 0px;
-  max-width: 450px;
   width: 100%;
   height: 450px;
   object-fit: cover;
