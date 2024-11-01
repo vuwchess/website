@@ -27,7 +27,7 @@ export default {
   },
   async created() {
     this.images = (await this.getImages()).reverse();
-    this.years = this.images.map((image) => image['year']).filter((year, index, self) => self.indexOf(year) === index);
+    this.years = this.images.map((image) => image['year']).filter((year, index, self) => self.indexOf(year) === index).sort().reverse();
   },
   methods: {
     getImages: async () => {
