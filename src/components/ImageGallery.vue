@@ -1,4 +1,4 @@
-<script lang="ts" >
+<script lang="ts">
 import Galleria from 'primevue/galleria';
 import 'primevue/resources/themes/saga-green/theme.css';
 export default {
@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       images: [],
+      years: [],
       responsiveOptions: [
         {
           breakpoint: '991px',
@@ -26,6 +27,7 @@ export default {
   },
   async created() {
     this.images = (await this.getImages()).reverse();
+    this.years = this.images.map((image) => image['year']).filter((year, index, self) => self.indexOf(year) === index);
   },
   methods: {
     getImages: async () => {
@@ -41,6 +43,7 @@ export default {
               description
               url
             }
+            year
           }
         }
       }`;
@@ -68,18 +71,35 @@ export default {
 </script>
 
 <template>
-  <div class="card">
-    <Galleria :value="images" :responsiveOptions="responsiveOptions" :numVisible="5" :circular="true"
-      :showItemNavigators="true" :showThumbnails="false" :showItemNavigatorsOnHover="false" :showIndicatorsOnItem="false"
-      :showIndicators="true">
-      <template #item="slotProps">
-        <img :src="slotProps.item.source.url" :alt="slotProps.item.source.description" class="gallery-image" />
-      </template>
-    </Galleria>
+  <div class="years-container">
+    <div v-for="year in years" :key="year" class="year">
+      <h2>{{ year }}</h2>
+      <div class="card">
+        <Galleria :value="images.filter((image) => image['year'] === year)" :responsiveOptions="responsiveOptions"
+          :numVisible="5" :circular="true" :showItemNavigators="true" :showThumbnails="false"
+          :showItemNavigatorsOnHover="false" :showIndicatorsOnItem="false" :showIndicators="true">
+          <template #item="slotProps">
+            <img :src="slotProps.item.source.url" :alt="slotProps.item.source.description" class="gallery-image" />
+          </template>
+        </Galleria>
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped>
+.years-container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.year {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .card {
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
   border-radius: 25px;
