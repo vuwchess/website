@@ -1,16 +1,12 @@
 <script setup lang="ts">
-import { Calendar } from 'v-calendar';
+import EventGallery from '@/components/EventGallery.vue';
 import 'v-calendar/style.css';
-
-import { ref } from 'vue';
-
-const selectedColor = ref('green');
 </script>
 
 <template>
     <div class="events">
         <h1 class="green">Events</h1>
-        <Calendar :color="selectedColor" />
+        <EventGallery />
     </div>
 </template>
 
