@@ -5,7 +5,7 @@ import 'v-calendar/style.css';
 
 <template>
     <div class="events">
-        <h1 class="green">Events</h1>
+        <h1 class="green">Upcoming Events</h1>
         <EventGallery />
     </div>
 </template>
