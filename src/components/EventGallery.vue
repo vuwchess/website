@@ -53,28 +53,56 @@ export default {
 </script>
 
 <template>
-    <div class="events-container">
+    <div class="calendar-container">
         <Calendar :color="selectedColor" />
-        <div v-for="event in events" :key="event" class="event">
-            <h2>{{ event["title"] }}</h2>
-            <div class="card">
-
+        <div class="events-container">
+            <div v-for="event in events" :key="event" class="card">
+                <div class="content">
+                    <h2>{{ event["title"] }}</h2>
+                    <div>{{ event["description"] }}</div>
+                </div>
+                <div class="date">
+                    <div>{{ new Date(event["startDateTime"]).toLocaleString('en-NZ', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: '2-digit',
+                        hour12: true, hour: 'numeric',
+                        minute: '2-digit'
+                    }) }}</div>
+                    -
+                    <div>{{ new Date(event["startDateTime"]).toDateString() !== new
+                        Date(event["endDateTime"]).toDateString() ? new
+                            Date(event["endDateTime"]).toLocaleString('en-NZ') :
+                        new Date(event["endDateTime"]).toLocaleTimeString('en-NZ', {
+                            hour12: true, hour: 'numeric',
+                            minute: '2-digit'
+                        })
+                    }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </template>
 
 <style scoped>
-.events-container {
+h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    color: var(--color-heading);
+}
+
+.calendar-container {
     display: flex;
     flex-direction: column;
     gap: 40px;
 }
 
-.event {
+.events-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 24px;
 }
 
 .card {
@@ -82,5 +110,22 @@ export default {
     border-radius: 25px;
     background-color: var(--background-color);
     width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.date {
+    display: flex;
+    gap: 2px;
+    color: hsla(160, 100%, 37%, 1);
 }
 </style>
