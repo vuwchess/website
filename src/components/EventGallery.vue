@@ -12,7 +12,7 @@ export default {
         };
     },
     async created() {
-        this.events = (await this.getEvents());
+        this.events = (await this.getEvents()).filter((event: any) => new Date() < new Date(event["startDateTime"])).sort((a: any, b: any) => new Date(a["endDateTime"]) > new Date(b["endDateTime"]) ? 1 : -1);
     },
     methods: {
         getEvents: async () => {
