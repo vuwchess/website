@@ -8,11 +8,17 @@ export default {
     data() {
         return {
             events: [],
+            attributes: [],
             selectedColor: 'green',
         };
     },
     async created() {
         this.events = (await this.getEvents()).filter((event: any) => new Date() < new Date(event["startDateTime"])).sort((a: any, b: any) => new Date(a["endDateTime"]) > new Date(b["endDateTime"]) ? 1 : -1);
+        const dates = this.events.map((event) => [new Date(event["startDateTime"]), new Date(event["endDateTime"])])
+        this.attributes = [{
+            highlight: 'green',
+            dates,
+        }] as any
     },
     methods: {
         getEvents: async () => {
@@ -54,7 +60,7 @@ export default {
 
 <template>
     <div class="calendar-container">
-        <Calendar :color="selectedColor" />
+        <Calendar class="my-calendar" transparent is-dark="system" :attributes="attributes" />
         <div class="events-container">
             <div v-for="event in events" :key="event" class="card">
                 <div class="content">
@@ -85,6 +91,21 @@ export default {
     </div>
 </template>
 
+<style>
+.my-calendar {
+    border-color: var(--color-border);
+    color: var(--color-text);
+}
+
+.my-calendar .vc-weekday {
+    color: hsla(160, 100%, 37%, 1);
+}
+
+.my-calendar button {
+    background-color: var(--background-color);
+    ;
+}
+</style>
 <style scoped>
 h2 {
     font-size: 1.2rem;
@@ -106,7 +127,8 @@ h2 {
 }
 
 .card {
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--color-border);
     border-radius: 25px;
     background-color: var(--background-color);
     width: 100%;

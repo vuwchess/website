@@ -101,7 +101,8 @@ export default {
 }
 
 .card {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-border);
   border-radius: 25px;
   background-color: var(--background-color);
   width: 100%;
